@@ -31,10 +31,12 @@ def get_price(message: telebot.types.Message):
     except ConvertionException as e:
         bot.reply_to(message, f'Ошибка пользователя. \n{e}')
     except Exception as e:
-        bot.reply_to(message, f'Не удалось обработать команду\n{e}')
+        bot.reply_to(message, f'Не удалось обработать команду.\n{e}')
     else:
-        text = f'Цена {amount} {quote} в {base} — {total_base}'
+        text = f'Цена {base} в {quote}\n{amount} {base} = {total_base} {quote}'
         bot.send_message(message.chat.id, text)
 
 bot.polling()
+
+
 
